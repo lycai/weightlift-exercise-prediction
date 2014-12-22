@@ -71,32 +71,14 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <div id="method" class="section level3">
 <h3>Method</h3>
 <p>All data processing was done in <a href="http://www.r-project.org/">R</a>, with preliminary data checking in a spreadsheet program.</p>
-<p>We first pre-process the data, removing all incomplete columns as well as various factors which should not affect the prediction such as the test number, subject username and timestamps. this leaves <code>54</code> usable predictors to build our model with.</p>
+<p>We first pre-process the data, removing all incomplete columns as well as various factors which should not affect the prediction such as the test number, subject username and timestamps. This leaves <code>54</code> usable predictors to build our model with.</p>
 <p>For the model itself, we used random forest classification, using the <a href="http://topepo.github.io/caret/index.html">Caret</a> and <a href="http://cran.r-project.org/web/packages/randomForest/index.html">randomForest</a> libraries in R. We ran it with an initial seed of <code>1</code> and the default <code>500</code> random trees generated.</p>
 <p>Due to the nature of the random forest model itself, no cross validation was needed<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>.</p>
 </div>
 <div id="results" class="section level3">
 <h3>Results</h3>
 <p>Our model predicted the training data very well, with an estimated Out Of Bag error of <code>0.15%</code>. This corresponds with an estimated Out of Sample accuracy of <code>99.85%</code>. Such a high value can be explained through overfitting as while random forest classification does not need explicit cross validating, it is still prone to overfitting. The real world Out of Sample accuracy can be expected to be markedly lower.</p>
-<pre><code>## R code for predicting exercise type from WLE data
-## 
-## Loading libraries...</code></pre>
-<pre><code>## randomForest 4.6-10
-## Type rfNews() to see new features/changes/bug fixes.</code></pre>
-<pre><code>## Done!
-## Loading and optimising training data... Done!
-## Training random forest model... Done!
-## Loading test data... Done!
-## Predicting classes from test data... Done!
-## 
-## The random forest model is located in pml.rf. A logical array of the predictors used is in pml.goodcols.
-## 
-## The predicted classes for the test data shown below are located in pml.prediction:
-##  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 
-##  B  A  B  A  A  E  D  B  A  A  B  C  B  A  E  E  A  B  B  B 
-## Levels: A B C D E
-## 
-## Have a nice day!</code></pre>
+<p>Below is the confusion matrix and class errors for each weightlifting exercise type.</p>
 <pre><code>##      A    B    C    D    E  class.error
 ## A 5580    0    0    0    0 0.0000000000
 ## B    4 3791    2    0    0 0.0015801949

@@ -31,6 +31,8 @@ Due to the nature of the random forest model itself, no cross validation was nee
 
 Our model predicted the training data very well, with an estimated Out Of Bag error of `0.15%`. This corresponds with an estimated Out of Sample accuracy of `99.85%`. Such a high value can be explained through overfitting as while random forest classification does not need explicit cross validating, it is still prone to overfitting. The real world Out of Sample accuracy can be expected to be markedly lower.
 
+Below is the confusion matrix and class errors for each weightlifting exercise type.
+
 ```{r, echo=FALSE}
 load('learnedRfModel.R')
 pml.rf$confusion
